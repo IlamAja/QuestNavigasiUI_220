@@ -1,11 +1,13 @@
 package com.example.myapplication.view
 
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavController
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import java.lang.reflect.Modifier
 
 enum class Navigasi {
     Formulir,
@@ -16,14 +18,14 @@ enum class Navigasi {
 @Composable
 fun DataApp(
     navController: NavHostController = rememberNavController(),
-    modifier: Modifier
+    modifier: Modifier = Modifier
 ){
     Scaffold { isiRuang ->
         NavHost(
             navController = navController,
             startDestination = Navigasi.Formulir.name,
 
-            modifier = Modifier.padding(paddingValues = isiRuang)
+            modifier = modifier.padding(paddingValues = isiRuang)
         ){
             composable(route = Navigasi.Formulir.name){
                 FormIsian (
