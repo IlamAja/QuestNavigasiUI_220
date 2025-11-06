@@ -1,5 +1,6 @@
 package com.example.myapplication.view
 
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
@@ -17,5 +18,21 @@ fun DataApp(
     navController: NavHostController = rememberNavController(),
     modifier: Modifier
 ){
+    Scaffold { isiRuang ->
+        NavHost(
+            navController = navController,
+            startDestination = Navigasi.Formulir.name,
 
+            modifier = Modifier.padding(paddingValues = isiRuang)
+        ){
+            composable(route = Navigasi.Formulir.name){
+                FormIsian (
+                    onSubmitBtnClick = {
+                        navController.navigate(Navigasi.Detail.name)
+                    }
+                )
+            }
+
+        }
+    }
 }
